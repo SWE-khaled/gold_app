@@ -14,10 +14,10 @@ class GoldCubit extends Cubit<GoldState> {
     emit(GoldLoading());
 
     try {
-      // عيار 21 هو الأساس
+    
       final gold21 = await apiService.getGoldPrice('21');
 
-      // محاولة جلب عيار 24 و18
+    
       GoldModel? gold24;
       GoldModel? gold18;
 
@@ -29,7 +29,7 @@ class GoldCubit extends Cubit<GoldState> {
         gold18 = await apiService.getGoldPrice('18');
       } catch (_) {}
 
-      // حساب الأسعار في حالة عدم توفرها
+      
       gold24 ??= GoldModel(
         sellingPrice: convertPrice(gold21.sellingPrice, 24),
         buyingPrice: convertPrice(gold21.buyingPrice, 24),
